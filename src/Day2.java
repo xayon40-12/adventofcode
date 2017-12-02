@@ -1,5 +1,3 @@
-import org.omg.CORBA.INTERNAL;
-
 public class Day2 {
     public static void main(String args[]){
         String s = "5048\t177\t5280\t5058\t4504\t3805\t5735\t220\t4362\t1809\t1521\t230\t772\t1088\t178\t1794\n" +
