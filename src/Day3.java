@@ -3,6 +3,22 @@ import java.util.HashMap;
 
 public class Day3 {
     public static int square(int n){
+        //a square around the center is composed of multiple rings around each other
+        //there is the center with the value 1, it is the ring n=0
+        //after there is the ring n=1 with values from 2 to 9
+        //after there is the ring n=2 with values from 10 to 25
+        //and so on ...
+        //on each ring there is 4 sides of equal length "l" that share a corner
+        //so the length (or perimeter) of the ring is (l-1)*4
+        //the length l of the sides grow like that: 1, 3, 5, 7, ...
+        //and n grow like that: 0, 1, 2, 3, 4, ...
+        //so the link is: n = (l-1)/2 or l = 2*n + 1
+        //so the perimeter is: (l-1)*4 = ((2*n + 1) - 1)*4 = (2*n)*4 = n*8
+        //if n=0 there is not really a perimeter so 0*8=0 but we need to keep in memory that for n=0 there is one value
+        //if we sum each perimeter the result is the number of values in the square of size n:
+        //sum = 0*8 + 1*8 + 2*8 + ... + n*8 = (0+1+2+...+n)*8 = ( n*(n+1)/2 )*8 = n*(n+1)*4
+        //but for n=0 there is one value so we need to add 1
+        //sum = 4*n*(n+1) + 1 = number of values inside the ring n included (=inside the square of size n)
         return 4*n*(n+1) + 1;
     }
 
