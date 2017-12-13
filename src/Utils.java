@@ -7,4 +7,17 @@ public class Utils {
         BufferedReader re = new BufferedReader(new FileReader("resources/Day"+day+"input.txt"));
         return re.readLine();
     }
+
+    public static String inputWholeFile(int day) throws IOException {
+        BufferedReader re = new BufferedReader(new FileReader("resources/Day"+day+"input.txt"));
+        StringBuilder sb = new StringBuilder();
+        String line = re.readLine();
+        while(line != null){
+            sb.append(line);
+            line = re.readLine();
+            if(line != null) sb.append(('\n'));
+        }
+
+        return sb.toString();
+    }
 }
