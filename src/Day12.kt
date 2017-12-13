@@ -2,7 +2,8 @@ package Day12
 
 fun main(args: Array<String>) {
     input()
-    println("countGroup: "+Prog.get("0")?.countGroup())
+    println("countGroup: ${Prog.countGroupByName("0")}")
+    println("nbGroup: ${Prog.countNbGroup()}")
 }
 
 //class Prog that contains its name and an array of others Prog that it is connected
@@ -49,6 +50,23 @@ class Prog(val name: String){
                 check(p)
                 map[prog]!!.add(map[p]!!)
             }
+        }
+
+        fun countGroupByName(name: String, inGroup: HashSet<Prog> = HashSet()): Int{//return the countGroup of Prog "name"
+            return get(name)?.countGroup(inGroup) ?: 0
+        }
+
+        fun countNbGroup(): Int{
+            var count = 0;
+            val names = ArrayList<String>(map.keys)
+            while(names.size != 0){//until there is no names left, take the first name, find the group, remove group names
+                count++ //for each group
+                val inGroup = HashSet<Prog>()//prepare an empty hashSet for countGroupByName
+                countGroupByName(names[0], inGroup)//use countGroupByName to fill inGroup with all Prog in that group
+                inGroup.forEach { names.remove(it.name) }//remove each names of that group from names list
+            }
+
+            return count
         }
     }
 }
