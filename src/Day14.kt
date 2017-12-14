@@ -46,7 +46,7 @@ fun countRegions(s: String): Int{
         if(i != 127) grid += "\n"
     }
     var count = 0
-    //TODO count how many group there is
+    //TODO count how many group there is 
     return count
 }
 
